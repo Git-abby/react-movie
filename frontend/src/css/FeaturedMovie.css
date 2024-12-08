@@ -1,0 +1,42 @@
+.featured_wrapper {
+  position: relative;
+  padding: 0 1.8rem;
+  margin-bottom: 2rem;
+}
+.featured_wrapper img {
+  width: 100%;
+  height: 50vh;
+  object-fit: cover;
+  object-position: right bottom;
+  border-radius: 10px;
+}
+.title_wrapper {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  max-width: 100%;
+  left: 2rem;
+  bottom: 2rem;
+  padding: 20px 40px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  row-gap: 10px;
+  /* overflow: hidden; */
+}
+.title_wrapper h1 {
+  width: 70%;
+}
+.featured-overview {
+  font-size: 1.25rem;
+  width: 50%;
+}
+.f-button {
+  background: #f40612 !important;
+  color: #fff !important;
+  font-size: 18px;
+  padding: 0.5rem 3rem;
+  outline: none;
+  border: 0 !important;
+}

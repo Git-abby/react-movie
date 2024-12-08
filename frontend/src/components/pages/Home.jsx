@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { searchMovies, getPopularMovies } from "../../services/api";
 import MovieCard from "../MovieCard";
 import "../../css/Home.css";
+import FeaturedMovie from "./FeaturedMovie";
 
 function Home() {
   //When state change occurs, entire compo is reran or re-rendered
@@ -15,6 +16,7 @@ function Home() {
     const loadPopularMovies = async () => {
       try {
         const popularMovies = await getPopularMovies();
+        // console.log(popularMovies[9])
         setMovies(popularMovies);
       } catch (err) {
         setError("Failed to load movies....");
@@ -48,6 +50,7 @@ function Home() {
 
   return (
     <div className="home">
+      <FeaturedMovie />
       <form onSubmit={handleSearch} action="" className="search-form">
         <input
           type="text"

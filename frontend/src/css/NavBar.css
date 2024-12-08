@@ -1,31 +1,38 @@
 .navbar {
-    background-color: #000000;
+    /* background-color: #000000; */
     padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
   }
   
   .navbar-brand {
     font-size: 1.5rem;
     font-weight: bold;
-  }
-  
-  .navbar-links {
+}
+
+.navbar-brand a{
+    color: azure;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+.navbar-links {
     display: flex;
     gap: 2rem;
-  }
-  
-  .nav-link {
+}
+
+.nav-link {
     font-size: 1rem;
     padding: 0.5rem 1rem;
     border-radius: 4px;
-    transition: background-color 0.2s;
+    transition: background-color 0.5s;
+    color: #fff;
   }
   
   .nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    color: red;
   }
   
   @media (max-width: 768px) {
