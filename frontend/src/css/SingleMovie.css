@@ -1,0 +1,56 @@
+/* Full-page container */
+.single-movie {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    /* align-items: center; */
+    justify-content: center;
+    /* height: 100vh; Full viewport height */
+    /* background-color: #f0f0f0; */
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  /* Image container styling */
+  .image-holder {
+    flex: 1 1 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .image-holder img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Movie info container */
+  .movie-info {
+    flex: 2 1 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+  }
+  
+  /* Movie title */
+  .movie-info h2 {
+    font-size: 3rem;
+    color: #f6f6f6;
+    margin-bottom: 15px;
+  }
+  
+  /* Paragraph styling */
+  .movie-info p {
+    font-size: 1.25rem;
+    color: #999;
+    margin: 8px 0;
+    line-height: 1.5;
+  }
+  
+  /* Bold text in paragraphs */
+  .movie-info p strong {
+    color: crimson;
+    font-weight: bold;
+  }

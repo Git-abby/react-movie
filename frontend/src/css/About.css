@@ -1,0 +1,47 @@
+.about{
+    margin: 2rem 0;
+    /* border: 2px solid; */
+    padding: 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem 0;
+}
+
+.title{
+    /* border: 1px solid; */
+    font-size: 2rem;
+    color: #FFF;
+}
+.sub-title{
+    position: relative;
+    font-size: 1.50rem;
+    font-weight: 300;
+    color: aqua;
+}
+.sub-title::after{
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    background-color: aqua;
+    width: 50%;
+    height: 3px;
+}
+
+.about p{
+    font-size: 1.25rem;
+    letter-spacing: 5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.link{
+    padding: 5px 10px;
+    background-color: black;
+    color: #FFF;
+    transition: 0.5s ease-in-out background;
+}
+
+.link:hover{
+    background-color: #FFF;
+    color: black;
+}

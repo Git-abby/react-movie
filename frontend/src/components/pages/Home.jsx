@@ -3,6 +3,12 @@ import { searchMovies, getPopularMovies } from "../../services/api";
 import MovieCard from "../MovieCard";
 import "../../css/Home.css";
 import FeaturedMovie from "./FeaturedMovie";
+import { useMovieContext } from "../../contexts/MovieContexts";
+
+//React- toastify
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function Home() {
   //When state change occurs, entire compo is reran or re-rendered
@@ -11,6 +17,8 @@ function Home() {
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const {notification, setNotification} = useMovieContext();
 
   useEffect(() => {
     const loadPopularMovies = async () => {
@@ -48,8 +56,24 @@ function Home() {
     }
   };
 
+
+
   return (
     <div className="home">
+       <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        transition:Bounce
+        
+      />
       <FeaturedMovie />
       <form onSubmit={handleSearch} action="" className="search-form">
         <input

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import '../css/NavBar.css'
 function NavBar() {
   return (
-    <div className="navbar">
+    <div className="navbar bg-gray-1 dark:bg-dark">
       <div className="navbar-brand"> 
         <Link to="/">GitFlix</Link>
       </div>
