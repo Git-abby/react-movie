@@ -66,3 +66,32 @@
     width: 100%;
     box-sizing: border-box;
   }
+  /* Notification styling */
+.notification {
+  position: absolute; /* Absolute positioning */
+  top: 20px; /* Offset from the top */
+  right: 20px; /* Offset from the right */
+  background-color: #4caf50; /* Success green */
+  color: white; /* Text color */
+  padding: 15px; /* Padding around text */
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  z-index: 1000; /* Ensure it overlays other elements */
+  animation: fadeInOut 3s ease-in-out; /* Smooth fade in/out */
+}
+
+/* Fade in and out animation */
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  10%, 90% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
