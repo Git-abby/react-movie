@@ -16,6 +16,7 @@ export const searchMovies = async (query) => {
   const data = await response.json();
   return data.results;
 };
+
 // https://api.themoviedb.org/3/movie/1182387?language=en-US
 export const movieDetails = async (movie_id) => {
   const response = await fetch(`${BASE_URL}/movie/${movie_id}?api_key=${API_KEY}`);
