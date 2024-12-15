@@ -11,6 +11,7 @@ import SingleMovie from "./components/pages/SingleMovie";
 import Footer from "./components/Footer";
 import NotFound from "./components/pages/NotFound";
 import Login from "./components/pages/Login";
+import SignUp from "./components/pages/SignUp";
 // it we do named export we had to wrap function name here in {} like {MovieCard}
 
 // A compo is just any fun() in JS that returns some kind of JSX CODE
@@ -24,11 +25,12 @@ function App() {
       <NavBar />
       <main className="main bg-gray-1 dark:bg-dark">
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/favorites" element={<Favorites />} />
           <Route path="/about" element={<About />} />
           <Route path="/movie/:movieId" element={<SingleMovie />} />
           <Route path="/signin" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
           <Route path="/404" element={<NotFound/>} />
         </Routes>
       </main>

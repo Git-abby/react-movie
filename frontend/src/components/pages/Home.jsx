@@ -7,10 +7,16 @@ import { useMovieContext } from "../../contexts/MovieContexts";
 
 //React- toastify
 import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
+//Firebase Auth state
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../../services/firebase";
 
 function Home() {
+  //USER INFO
+  const [user, setUser] = useState(null);
+
   //When state change occurs, entire compo is reran or re-rendered
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -18,7 +24,20 @@ function Home() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const {notification, setNotification} = useMovieContext();
+  // // Listen for auth state changes
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        console.log(currentUser.email);
+        setUser(currentUser);
+      } else {
+        setUser(null);
+      }
+    });
+
+    //Clean up subscription
+    return () => unsubscribe();
+  }, []);
 
   useEffect(() => {
     const loadPopularMovies = async () => {
@@ -45,9 +64,9 @@ function Home() {
     setLoading(true);
 
     try {
-        const searchResults = await searchMovies(searchQuery)
-        setMovies(searchResults)
-        setError(null)
+      const searchResults = await searchMovies(searchQuery);
+      setMovies(searchResults);
+      setError(null);
     } catch (err) {
       setError("Failed to search movie...");
       console.log(err);
@@ -56,11 +75,9 @@ function Home() {
     }
   };
 
-
-
   return (
     <div className="home">
-       <ToastContainer
+      <ToastContainer
         position="top-center"
         autoClose={5000}
         hideProgressBar={false}
@@ -72,7 +89,6 @@ function Home() {
         pauseOnHover
         theme="dark"
         transition:Bounce
-        
       />
       <FeaturedMovie />
       <form onSubmit={handleSearch} action="" className="search-form">
