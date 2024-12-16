@@ -3,47 +3,56 @@ import { auth } from "../../services/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
 import { ToastContainer, toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
   const loginWithEmailPassword = async (e) => {
     e.preventDefault();
+
+    if (username == "" || password == "") {
+      toast.error("Please fill the username or password");
+      return;
+    }
     try {
       const data = await signInWithEmailAndPassword(auth, username, password);
-        navigate("/home")
+      navigate("/home");
       console.log(data);
     } catch (error) {
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log(errorCode, errorMessage);
-      toast.error(errorMessage);
+      if (errorCode === "auth/invalid-email") {
+        toast.error("This email is invalid. Please log in.");
+      } else {
+        toast.error("An unexpected error occurred. Please try again.");
+      }
     }
   };
   //   console.log(username, password);
   return (
     <section className="bg-gray-1 py-20 lg:py-[120px] dark:bg-dark">
-        <ToastContainer
-            position="top-center"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="dark"
-            transition:Bounce
-          />
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        transition:Bounce
+      />
       <div className="container mx-auto">
         <div className="-mx-4 flex flex-wrap">
           <div className="w-full px-4">
-            <div className="relative mx-auto max-w-[525px] overflow-hidden rounded-lg bg-white px-10 py-16 text-center sm:px-12 md:px-[60px] dark:bg-dark-2">
-              <div className="mb-10 text-center md:mb-16">
+            <div className="relative mx-auto max-w-[525px] overflow-hidden rounded-lg bg-white px-10 py-8 text-center sm:px-12 md:px-[60px] dark:bg-dark-2">
+              <div className="mb-5 text-center md:mb-5">
                 <a className="mx-auto inline-block max-w-[160px] text-2xl text-white">
                   GitFlix
                 </a>
@@ -75,14 +84,19 @@ function Login() {
                   />
                 </div>
               </form>
-
-              <a className="mb-2 inline-block text-base text-dark hover:text-primary hover:underline dark:text-white">
-                Forget Password?
-              </a>
-              <p className="text-base text-body-color dark:text-dark-6">
-                <span className="pr-0.5">Not a member yet?</span>
-                <a className="text-primary hover:underline">Sign Up</a>
-              </p>
+              <div className="flex flex-col justify-center items-center">
+                <a className="mb-2 inline-block text-base text-dark hover:text-primary hover:underline dark:text-white">
+                  Forget Password?
+                </a>
+                <div>
+                  <span className="text-base text-body-color dark:text-dark-6 pr-1.5">
+                    Not a member yet? 
+                  </span>
+                  <Link to={"/signUp"} className="text-primary hover:underline">
+                    Sign Up
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </div>

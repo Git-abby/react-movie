@@ -24,6 +24,7 @@ function Home() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
+
   // // Listen for auth state changes
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -34,12 +35,10 @@ function Home() {
         setUser(null);
       }
     });
-
     //Clean up subscription
     return () => unsubscribe();
   }, []);
-
-  useEffect(() => {
+ useEffect(() => {
     const loadPopularMovies = async () => {
       try {
         const popularMovies = await getPopularMovies();

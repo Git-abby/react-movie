@@ -1,54 +1,110 @@
 .navbar {
-    /* background-color: #000000; */
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
-  }
-  
-  .navbar-brand {
-    font-size: 1.5rem;
-    font-weight: bold;
+  /* background-color: #000000; */
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
 }
 
-.navbar-brand a{
-    color: azure;
-    letter-spacing: 2px;
-    font-weight: 700;
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navbar-brand a {
+  color: azure;
+  letter-spacing: 2px;
+  font-weight: 700;
 }
 
 .navbar-links {
-    display: flex;
-    gap: 2rem;
+  display: flex;
+  gap: 2rem;
 }
 
 .nav-link {
-    font-size: 1rem;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    transition: background-color 0.5s;
-    color: #fff;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.5s;
+  color: #fff;
+}
+
+.nav-link:hover {
+  color: aqua;
+}
+
+/* USER ACCOUTN AND LOGOUT */
+.nav-link {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 40px; /* Adjust based on your icon size */
+  right: 0px; /* Center or align as needed */
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px 15px;
+  z-index: 1000;
+  width: 175px;
+}
+
+.user-display-name {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.logout-button {
+  background-color: #100f0f;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.logout-button:hover {
+  background-color: #d32f2f;
+}
+.dropdown-menu {
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
   }
-  
-  .nav-link:hover {
-    color: red;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  @media (max-width: 768px) {
-    .navbar {
-      padding: 1rem;
-    }
-  
-    .navbar-brand {
-      font-size: 1.2rem;
-    }
-  
-    .navbar-links {
-      gap: 1rem;
-    }
-  
-    .nav-link {
-      padding: 0.5rem;
-    }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem;
   }
+
+  .navbar-brand {
+    font-size: 1.2rem;
+  }
+
+  .navbar-links {
+    gap: 1rem;
+  }
+
+  .nav-link {
+    padding: 0.5rem;
+  }
+}
