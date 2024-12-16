@@ -4,7 +4,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../services/firebase";
 
 import { ToastContainer, toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function SignUp() {
   const [name, setName] = useState("");
@@ -112,11 +112,14 @@ function SignUp() {
                   />
                 </div>
               </form>
-
-              <p className="text-base text-body-color dark:text-dark-6">
-                <span className="pr-0.5">Already have an account?</span>
-                <a className="text-primary hover:underline">Sign In</a>
-              </p>
+              <div className="flex justify-center items-center">
+                <span className="text-base text-body-color dark:text-dark-6 pr-1.5">
+                  Already have an account?
+                </span>
+                <Link to={"/signin"} className="text-primary hover:underline">
+                  Sign In
+                </Link>
+              </div>
             </div>
           </div>
         </div>
