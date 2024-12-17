@@ -1,0 +1,22 @@
+.genres-navbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    /* overflow-x: auto; */
+    padding: 10px;
+    background-color: #111928;
+  }
+  
+  .genre-button {
+    padding: 5px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #29333e;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .genre-button:hover {
+    background-color: #297474;
+  }
+  

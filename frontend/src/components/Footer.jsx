@@ -47,35 +47,7 @@ function Footer() {
               </p>
             </div>
           </div>
-          <div className="w-full px-4 sm:w-1/2 lg:w-2/12">
-            <div className="mb-10 w-full">
-              <h4 className="mb-9 text-lg font-semibold text-dark dark:text-white">
-                Resources
-              </h4>
-              <ul className="space-y-3">
-                <li>
-                  <a className="inline-block text-base leading-loose text-body-color hover:text-primary dark:text-dark-6">
-                    SaaS Development
-                  </a>
-                </li>
-                <li>
-                  <a className="inline-block text-base leading-loose text-body-color hover:text-primary dark:text-dark-6">
-                    Our Products
-                  </a>
-                </li>
-                <li>
-                  <a className="inline-block text-base leading-loose text-body-color hover:text-primary dark:text-dark-6">
-                    User Flow
-                  </a>
-                </li>
-                <li>
-                  <a className="inline-block text-base leading-loose text-body-color hover:text-primary dark:text-dark-6">
-                    User Strategy
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
+
           <div className="w-full px-4 sm:w-1/2 lg:w-2/12">
             <div className="mb-10 w-full">
               <h4 className="mb-9 text-lg font-semibold text-dark dark:text-white">
