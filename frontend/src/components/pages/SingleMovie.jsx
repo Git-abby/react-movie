@@ -44,6 +44,7 @@ const SingleMovie = () => {
         <p>
           <strong>Overview: </strong> {movie.overview}
         </p>
+        
       </div>
     </div>
   );

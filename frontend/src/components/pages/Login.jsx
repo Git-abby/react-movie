@@ -1,15 +1,21 @@
 import React, { useState } from "react";
 import { auth } from "../../services/firebase";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
+} from "firebase/auth";
 
 import { ToastContainer, toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
+import GoogleButton from "../GoogleButton";
 
 function Login() {
   const navigate = useNavigate();
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
+  // LOGIN FUNCTION (HELPS TO SIGN IN WITH EMAIL AND PASSWORD)
   const loginWithEmailPassword = async (e) => {
     e.preventDefault();
 
@@ -32,7 +38,32 @@ function Login() {
       }
     }
   };
-  //   console.log(username, password);
+
+  const provider = new GoogleAuthProvider();
+
+  // LOGIN WITH GOOGLE
+  const handleGoogleSignIn = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        // The signed-in user info.
+        const user = result.user;
+        navigate("/home");
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        console.log(error);
+        toast.error(errorMessage);
+      });
+  };
+
   return (
     <section className="bg-gray-1 py-20 lg:py-[120px] dark:bg-dark">
       <ToastContainer
@@ -51,11 +82,11 @@ function Login() {
       <div className="container mx-auto">
         <div className="-mx-4 flex flex-wrap">
           <div className="w-full px-4">
-            <div className="relative mx-auto max-w-[525px] overflow-hidden rounded-lg bg-white px-10 py-8 text-center sm:px-12 md:px-[60px] dark:bg-dark-2">
+            <div className="relative flex flex-col gap-y-5 mx-auto max-w-[525px] overflow-hidden rounded-lg bg-white px-10 py-8 text-center sm:px-12 md:px-[60px] dark:bg-dark-2">
               <div className="mb-5 text-center md:mb-5">
-                <a className="mx-auto inline-block max-w-[160px] text-2xl text-white">
+                <p className="mx-auto inline-block max-w-[160px] text-2xl text-white">
                   GitFlix
-                </a>
+                </p>
               </div>
               <form onSubmit={loginWithEmailPassword}>
                 <div className="mb-6">
@@ -76,7 +107,7 @@ function Login() {
                     className="w-full rounded-md border border-stroke bg-transparent px-5 py-3 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-dark-3 dark:text-white"
                   />
                 </div>
-                <div className="mb-10">
+                <div className="mb-0">
                   <input
                     type="submit"
                     value="Login"
@@ -84,13 +115,14 @@ function Login() {
                   />
                 </div>
               </form>
+              <GoogleButton onclickFunction={handleGoogleSignIn} />
               <div className="flex flex-col justify-center items-center">
                 <a className="mb-2 inline-block text-base text-dark hover:text-primary hover:underline dark:text-white">
                   Forget Password?
                 </a>
                 <div>
                   <span className="text-base text-body-color dark:text-dark-6 pr-1.5">
-                    Not a member yet? 
+                    Not a member yet?
                   </span>
                   <Link to={"/signUp"} className="text-primary hover:underline">
                     Sign Up
