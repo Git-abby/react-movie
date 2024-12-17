@@ -22,10 +22,12 @@ jobs:
 
       # Install dependencies
       - name: Install dependencies
+        working-directory: ./frontend
         run: npm install
 
       # Build the project
       - name: Build the project
+        working-directory: ./frontend
         run: npm run build
 
       # Deploy to Vercel
