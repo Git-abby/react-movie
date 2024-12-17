@@ -50,10 +50,10 @@ function NavBar() {
     <>
       <div className="navbar bg-gray-1 dark:bg-dark">
         <div className="navbar-brand">
-          <Link to="/home">GitFlix</Link>
+          <Link to="/">GitFlix</Link>
         </div>
         <div className="navbar-links">
-          {user && (
+          {user && user ? (
             <>
               <Link
                 className="nav-link"
@@ -63,40 +63,49 @@ function NavBar() {
               <Link to="/favorites" className="nav-link">
                 Favorites
               </Link>
+              <div>
+                {user && (
+                  <Link
+                    className="nav-link"
+                    onMouseEnter={() => setShowMenu(true)}
+                    onMouseLeave={() => setShowMenu(false)}
+                    style={{ position: "relative" }}>
+                    <ul>
+                      <li>
+                        <PersonIcon />
+                      </li>
+                    </ul>
+
+                    {showMenu && user && (
+                      <div className="dropdown-menu">
+                        <p className="user-display-name">
+                          {user && user
+                            ? user.displayName || user.email
+                            : "Guest"}
+                        </p>
+                        {user && (
+                          <button
+                            className="logout-button"
+                            onClick={handleLogout}>
+                            Logout
+                          </button>
+                        )}
+                      </div>
+                    )}
+                  </Link>
+                )}
+              </div>
+            </>
+          ) : (
+            <>
+              <Link to="/about" className="nav-link">
+                About
+              </Link>
+              <Link to="/signin" className="nav-link">
+                Login
+              </Link>
             </>
           )}
-
-          <Link to="/about" className="nav-link">
-            About
-          </Link>
-          <div>
-            {user && (
-              <Link
-                className="nav-link"
-                onMouseEnter={() => setShowMenu(true)}
-                onMouseLeave={() => setShowMenu(false)}
-                style={{ position: "relative" }}>
-                <ul>
-                  <li>
-                    <PersonIcon />
-                  </li>
-                </ul>
-
-                {showMenu && user && (
-                  <div className="dropdown-menu">
-                    <p className="user-display-name">
-                      {user && user ? user.displayName || user.email : "Guest"}
-                    </p>
-                    {user && (
-                      <button className="logout-button" onClick={handleLogout}>
-                        Logout
-                      </button>
-                    )}
-                  </div>
-                )}
-              </Link>
-            )}
-          </div>
         </div>
       </div>
       {showGenres && <GenresNavbar />}
