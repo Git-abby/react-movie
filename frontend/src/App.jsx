@@ -25,14 +25,14 @@ function App() {
       <main className="main bg-gray-1 dark:bg-dark">
         <Routes>
           <Route path="/" element={<LandingPage />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/signin" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/home" element={<Home />} />
           <Route path="/favorites" element={<Favorites />} />
           <Route path="/movie/:movieId" element={<SingleMovie />} />
           <Route path="/genre/:genreId" element={<ByGenreMovies />} />
           <Route path="/about" element={<About />} />
-          <Route path="/404" element={<NotFound />} />
+          <Route path="/*" element={<NotFound />} />
         </Routes>
       </main>
       <Footer />

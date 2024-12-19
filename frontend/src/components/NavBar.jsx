@@ -28,7 +28,7 @@ function NavBar() {
         setUser(currentUser);
       } else {
         setUser(null);
-        navigate("/signin");
+        navigate("/");
       }
     });
 
@@ -39,7 +39,7 @@ function NavBar() {
   const handleLogout = () => {
     signOut(auth)
       .then(() => {
-        navigate("/signin");
+        navigate("/");
         console.log("User logged out");
       })
       .catch((error) => {
